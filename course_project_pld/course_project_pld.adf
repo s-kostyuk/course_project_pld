@@ -1,0 +1,81 @@
+[Project]
+Current Flow=Generic
+VCS=0
+version=3
+Current Config=compile
+
+[Configurations]
+compile=course_project_pld
+
+[Library]
+course_project_pld=.\course_project_pld\course_project_pld.lib
+
+[Settings]
+AccessRead=0
+AccessReadWrite=0
+AccessACCB=0
+AccessACCR=0
+AccessReadWriteSLP=0
+AccessReadTopLevel=1
+DisableC=1
+ENABLE_ADV_DATAFLOW=0
+FLOW_TYPE=HDL
+LANGUAGE=VHDL
+REFRESH_FLOW=1
+FLOWTOOLS=NONE
+FAMILY=
+
+[LocalVerilogSets]
+EnableSLP=1
+EnableDebug=0
+
+[LocalVhdlSets]
+CompileWithDebug=0
+
+[$LibMap$]
+course_project_pld=.
+Active_lib=
+
+[Folders]
+Name3=Makefiles
+Directory3=X:\course_project_pld\course_project_pld\
+Extension3=mak
+Name4=Memory
+Directory4=X:\course_project_pld\course_project_pld\
+Extension4=mem;mif;hex
+Name5=Dll Libraries
+Directory5=X:\course_project_pld\course_project_pld\
+Extension5=dll
+Name6=PDF
+Directory6=X:\course_project_pld\course_project_pld\
+Extension6=pdf
+Name7=HTML
+Directory7=X:\course_project_pld\course_project_pld\
+Extension7=htm;html
+
+[SpecTracer]
+WindowVisible=0
+
+[Groups]
+tests=1
+modules=1
+test_results=1
+
+[Files]
+/top.vhd=-1
+tests/tb_xor_3state.vhd=-1
+modules/d_trigger_level.vhd=-1
+modules/xor_3state.vhd=-1
+test_results/xor_3state_waveform.awc=-1
+
+[Files.Data]
+.\src\top.vhd=VHDL Source Code
+.\src\tests\tb_xor_3state.vhd=VHDL Source Code
+.\src\modules\d_trigger_level.vhd=VHDL Source Code
+.\src\modules\xor_3state.vhd=VHDL Source Code
+.\src\test_results\xor_3state_waveform.awc=Accelerated Waveform Configuration
+
+[HierarchyViewer]
+HierarchyInformation=tb_xor_3state|tb_xor_3state|0 
+ShowHide=ShowTopLevel
+Selected=

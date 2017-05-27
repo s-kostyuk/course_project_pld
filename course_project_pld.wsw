@@ -1,0 +1,11 @@
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\course_project_pld\src/tests/tb_xor_3state.vhd|]
+TemplateId=0
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\course_project_pld\src/modules/xor_3state.vhd|]
+TemplateId=0
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\course_project_pld\src/modules/d_trigger_level.vhd|]
+TemplateId=0
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\course_project_pld\src/top.vhd|]
+TemplateId=0
+[OPENDOC|Aldec.WaveFormASDB.7|.\course_project_pld\src/test_results/xor_3state_waveform.awc|]
+TemplateId=1
+ActiveDocument=1
