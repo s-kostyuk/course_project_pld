@@ -56,6 +56,11 @@ Extension7=htm;html
 [SpecTracer]
 WindowVisible=0
 
+[HierarchyViewer]
+HierarchyInformation=tb_xor_3state|tb_xor_3state|0
+ShowHide=ShowTopLevel
+Selected=
+
 [Groups]
 tests=1
 modules=1
@@ -64,18 +69,16 @@ test_results=1
 [Files]
 /top.vhd=-1
 tests/tb_xor_3state.vhd=-1
-modules/d_trigger_level.vhd=-1
+tests/tb_d_trigger_level.vhd=-1
 modules/xor_3state.vhd=-1
+modules/d_trigger_level.vhd=-1
 test_results/xor_3state_waveform.awc=-1
 
 [Files.Data]
 .\src\top.vhd=VHDL Source Code
 .\src\tests\tb_xor_3state.vhd=VHDL Source Code
-.\src\modules\d_trigger_level.vhd=VHDL Source Code
+.\src\tests\tb_d_trigger_level.vhd=VHDL Source Code
 .\src\modules\xor_3state.vhd=VHDL Source Code
+.\src\modules\d_trigger_level.vhd=VHDL Source Code
 .\src\test_results\xor_3state_waveform.awc=Accelerated Waveform Configuration
 
-[HierarchyViewer]
-HierarchyInformation=tb_xor_3state|tb_xor_3state|0 
-ShowHide=ShowTopLevel
-Selected=

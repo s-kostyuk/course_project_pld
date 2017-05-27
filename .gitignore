@@ -20,7 +20,8 @@ library.cfg
 *.lib
 *.mgf
 
-# Uncomment to ignore simulation results
+# Comment to save simulation results
 #*.awc
 #*.asdb
+#*.asdbw
 synthesis.order
