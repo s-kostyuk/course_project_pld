@@ -34,10 +34,10 @@ begin
 	end process;
 end tb_xor_3state;
 
-configuration TB_conf_tr of tb_xor_3state is
+configuration TB_conf_xor_3state of tb_xor_3state is
 	for tb_xor_3state
 		for UUT : xor_3state
 			use entity work.xor_3state(xor_3state);
 		end for;
 	end for;
-end TB_conf_tr;
+end TB_conf_xor_3state;
