@@ -21,7 +21,7 @@ library.cfg
 *.mgf
 
 # Comment to save simulation results
-#*.awc
-#*.asdb
-#*.asdbw
+*.awc
+*.asdb
+*.asdbw
 synthesis.order
