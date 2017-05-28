@@ -8,24 +8,40 @@ entity d_trigger_level is
 end entity;
 
 -- D-триггер с синхронизацией по уровню логич. '1'
-architecture d_trigger_level of d_trigger_level is
+--architecture d_trigger_level of d_trigger_level is
+--begin
+--	
+--	-- Процесс со списком чувствительности, 
+--	-- в списке обычно указывают все входы схемы
+--	process(D, C) is
+--		-- декларативная часть процесса - объявляем переменные
+--		variable vQ: std_logic;
+--		
+--		-- Тело процесса
+--	begin
+--		if C = '1' then
+--			vQ := D;
+--		end if;
+--		
+--		-- Последние операторы параллельного назначения
+--		--  выставляют полученное значение на выход с задержкой
+--		Q <= vQ; -- after 10 ns;
+--		notQ <= not vQ; -- after 10 ns;
+--	end process;
+--end architecture;
+
+-- D-триггер с синхронизацией по уровню логич. '1'
+architecture d_trigger_level_nand of d_trigger_level is
+	signal sQ, snQ : std_logic;
+	signal nS : std_logic;
+	signal nR : std_logic;
 begin
+	nS  <= D  nand C;
+	nR  <= nS nand C; --nR  <= (not D) nand C; 	  
 	
-	-- Процесс со списком чувствительности, 
-	-- в списке обычно указывают все входы схемы
-	process(D, C) is
-		-- декларативная часть процесса - объявляем переменные
-		variable vQ: std_logic;
-		
-		-- Тело процесса
-	begin
-		if C = '1' then
-			vQ := D;
-		end if;
-		
-		-- Последние операторы параллельного назначения
-		--  выставляют полученное значение на выход с задержкой
-		Q <= vQ; -- after 10 ns;
-		notQ <= not vQ; -- after 10 ns;
-	end process;
-end architecture;
+	sQ  <= nS nand snQ;
+	snQ <= nR nand sQ;
+	
+	Q <= sQ;
+	notQ <= snQ;
+end architecture; 
