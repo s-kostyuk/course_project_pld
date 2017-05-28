@@ -68,6 +68,7 @@ test_results=1
 
 [Files]
 /top.vhd=-1
+/tb_top.vhd=-1
 tests/tb_d_trigger_level.vhd=-1
 tests/tb_xor_3state.vhd=-1
 tests/tb_mx_n_1.vhd=-1
@@ -77,6 +78,7 @@ modules/d_trigger_level.vhd=-1
 
 [Files.Data]
 .\src\top.vhd=VHDL Source Code
+.\src\tb_top.vhd=VHDL Source Code
 .\src\tests\tb_d_trigger_level.vhd=VHDL Source Code
 .\src\tests\tb_xor_3state.vhd=VHDL Source Code
 .\src\tests\tb_mx_n_1.vhd=VHDL Source Code
