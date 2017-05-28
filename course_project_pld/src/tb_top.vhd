@@ -1,6 +1,7 @@
 library IEEE;
 use ieee.std_logic_arith.all;
 use ieee.std_logic_1164.all;
+use work.pattern_generators.all;
 
 entity tb_barrel_shifter is
 end tb_barrel_shifter;
@@ -14,13 +15,17 @@ architecture tb_barrel_shifter of tb_barrel_shifter is
 			A: in  std_logic_vector(2**M-1 downto 0);
 			SHIFT: in  std_logic_vector(M-1 downto 0);
 			nLE, nOE, COMPLMTO: in std_logic;
-			OUTPUT: out std_logic_vector (7 downto 0)
+			OUTPUT: out std_logic_vector (2**M-1 downto 0)
 			);
 	end component;
 	
 	constant SHIFT_WIDTH : integer := 3;
 	constant DATA_WIDTH : integer := 2**SHIFT_WIDTH;
 	constant DELAY : time := 20 ns;
+	constant DELAY_LOOP : time := DELAY*DATA_WIDTH;
+	constant DELAY_LOOP_HALF : time := DELAY_LOOP / 2;
+	constant DELAY_LOOP_QUARTER : time := DELAY_LOOP / 4;
+	constant CHECKERBOARD_PATTERN : std_logic_vector(DATA_WIDTH-1 downto 0) := 	checkerboard_code(DATA_WIDTH);
 	
 	signal A: std_logic_vector(DATA_WIDTH-1 downto 0);
 	signal SHIFT: std_logic_vector(SHIFT_WIDTH-1 downto 0);
@@ -32,53 +37,43 @@ begin
 	generic map(M => SHIFT_WIDTH)
 	port map(A => A, SHIFT => SHIFT, nLE => nLE, nOE => nOE, COMPLMTO => COMPLMTO, OUTPUT => OUTPUT);
 	
-	SetData : process is
+	SetShift : process is
 	begin
 		for i in 0 to DATA_WIDTH-1 loop
-			A    <= (others => '0');
-			A(i) <= '1';
-			
+			SHIFT <= conv_std_logic_vector (i, SHIFT_WIDTH);
 			wait for DELAY;
 		end loop;
 	end process;
 	
+	SetData : process is
+	begin
+		A    <= (others => '0');
+		A(DATA_WIDTH - 1) <= '1';
+		wait for DELAY_LOOP;
+		
+		A    <= CHECKERBOARD_PATTERN;
+		wait for DELAY_LOOP;
+	end process;
+	
 	SetOutputEnable : process is
 	begin
-		for i in 0 to DATA_WIDTH-1 loop
-			OE <= not OE;
-			
-			wait for DELAY*DATA_WIDTH;
-		end loop;
+		nOE <= '0'; wait for DELAY_LOOP + DELAY_LOOP_QUARTER;
+		nOE <= '1';	wait for DELAY_LOOP_QUARTER;
+		nOE <= '0'; wait for DELAY_LOOP_HALF;
 	end process;
 	
 	SetLatchEnable : process is
 	begin
-		for i in 0 to DATA_WIDTH-1 loop
-			--A <= conv_std_logic_vector (i, SHIFT_WIDTH);
-			
-			wait for DELAY*DATA_WIDTH;
-		end loop;
+		nLE <= '0'; wait for DELAY_LOOP + DELAY / 2;
+		nLE <= '1';	wait for DELAY_LOOP - DELAY / 2;
+		--nLE <= '0'; wait for DELAY_LOOP_QUARTER;
 	end process;
 	
 	SetCompl : process is
 	begin
-		for i in 0 to DATA_WIDTH-1 loop
-			--A <= conv_std_logic_vector (i, SHIFT_WIDTH);
-			
-			wait for DELAY*DATA_WIDTH;
-		end loop;
+		COMPLMTO <= '0'; wait for 2 * DELAY_LOOP - DELAY_LOOP_QUARTER;
+		COMPLMTO <= '1'; wait for DELAY_LOOP_QUARTER;
 	end process;
-	
-	SetShift : process is
-	begin
-		for i in 0 to DATA_WIDTH-1 loop
-			--A <= conv_std_logic_vector (i, SHIFT_WIDTH);
-			
-			wait for DELAY*DATA_WIDTH;
-		end loop;
-	end process;
-	
-	
 end tb_barrel_shifter;
 
 configuration TB_conf_barrel_shifter of tb_barrel_shifter is
