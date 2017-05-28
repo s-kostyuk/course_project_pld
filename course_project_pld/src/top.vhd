@@ -10,7 +10,7 @@ entity barrel_shifter is
 		A: in  std_logic_vector(2**M-1 downto 0);
 		SHIFT: in  std_logic_vector(M-1 downto 0);
 		nLE, nOE, COMPLMTO: in std_logic;
-		OUTPUT: out std_logic_vector (7 downto 0)
+		OUTPUT: out std_logic_vector (2**M-1 downto 0)
 		);
 	
 	constant N : integer := 2**M;
@@ -55,7 +55,7 @@ begin
 	
 	gen_shifted_data:
 	 	for i in 0 to N-1 generate
-		mx_d(i) <= A(N-1 downto i) & A(i-1 downto 0);
+		mx_d(i) <= A(i-1 downto 0) & A(N-1 downto i);
 	end generate;
 	
 	gen_mxs:
