@@ -49,30 +49,34 @@ begin
 	begin
 		A    <= (others => '0');
 		A(DATA_WIDTH - 1) <= '1';
-		wait for DELAY_LOOP;
+		wait for DELAY_LOOP * 2;
 		
 		A    <= CHECKERBOARD_PATTERN;
-		wait for DELAY_LOOP;
+		wait for DELAY;
+		
+		A    <= (others => '0');
+		wait for DELAY_LOOP - DELAY;
 	end process;
 	
 	SetOutputEnable : process is
 	begin
-		nOE <= '0'; wait for DELAY_LOOP + DELAY_LOOP_QUARTER;
+		nOE <= '0'; wait for DELAY_LOOP * 2 + DELAY_LOOP_QUARTER;
 		nOE <= '1';	wait for DELAY_LOOP_QUARTER;
 		nOE <= '0'; wait for DELAY_LOOP_HALF;
 	end process;
 	
 	SetLatchEnable : process is
 	begin
-		nLE <= '0'; wait for DELAY_LOOP + DELAY / 2;
-		nLE <= '1';	wait for DELAY_LOOP - DELAY / 2;
-		--nLE <= '0'; wait for DELAY_LOOP_QUARTER;
+		nLE <= '0'; wait for DELAY_LOOP * 2 + DELAY / 2;
+		nLE <= '1';	wait for DELAY_LOOP - DELAY_LOOP_QUARTER - DELAY / 2;
+		nLE <= '0'; wait for DELAY_LOOP_QUARTER;
 	end process;
 	
 	SetCompl : process is
 	begin
-		COMPLMTO <= '0'; wait for 2 * DELAY_LOOP - DELAY_LOOP_QUARTER;
-		COMPLMTO <= '1'; wait for DELAY_LOOP_QUARTER;
+		COMPLMTO <= '0'; wait for DELAY_LOOP;
+		COMPLMTO <= '1'; wait for DELAY_LOOP;
+		COMPLMTO <= '0'; wait for DELAY_LOOP;
 	end process;
 end tb_barrel_shifter;
 
