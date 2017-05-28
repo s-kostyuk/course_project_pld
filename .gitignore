@@ -22,6 +22,5 @@ library.cfg
 
 # Comment to save simulation results
 *.awc
-*.asdb
-*.asdbw
+*.asdb*
 synthesis.order
