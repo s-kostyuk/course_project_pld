@@ -72,7 +72,6 @@ tests/tb_xor_3state.vhd=-1
 tests/tb_d_trigger_level.vhd=-1
 modules/xor_3state.vhd=-1
 modules/d_trigger_level.vhd=-1
-test_results/xor_3state_waveform.awc=-1
 
 [Files.Data]
 .\src\top.vhd=VHDL Source Code
@@ -80,5 +79,4 @@ test_results/xor_3state_waveform.awc=-1
 .\src\tests\tb_d_trigger_level.vhd=VHDL Source Code
 .\src\modules\xor_3state.vhd=VHDL Source Code
 .\src\modules\d_trigger_level.vhd=VHDL Source Code
-.\src\test_results\xor_3state_waveform.awc=Accelerated Waveform Configuration
 
