@@ -61,11 +61,6 @@ HierarchyInformation=tb_xor_3state|tb_xor_3state|0
 ShowHide=ShowTopLevel
 Selected=
 
-[Groups]
-tests=1
-modules=1
-test_results=1
-
 [Files]
 /top.vhd=-1
 /tb_top.vhd=-1
@@ -75,14 +70,23 @@ tests/tb_mx_n_1.vhd=-1
 modules/mx_n_1.vhd=-1
 modules/xor_3state.vhd=-1
 modules/d_trigger_level.vhd=-1
+support_functions/patter_generators.vhd=-1
 
 [Files.Data]
 .\src\top.vhd=VHDL Source Code
 .\src\tb_top.vhd=VHDL Source Code
+.\src\patter_generators.vhd=VHDL Source Code
 .\src\tests\tb_d_trigger_level.vhd=VHDL Source Code
 .\src\tests\tb_xor_3state.vhd=VHDL Source Code
 .\src\tests\tb_mx_n_1.vhd=VHDL Source Code
 .\src\modules\mx_n_1.vhd=VHDL Source Code
 .\src\modules\xor_3state.vhd=VHDL Source Code
 .\src\modules\d_trigger_level.vhd=VHDL Source Code
+.\src\support_functions\patter_generators.vhd=VHDL Source Code
+
+[Groups]
+tests=1
+modules=1
+test_results=1
+support_functions=1
 
