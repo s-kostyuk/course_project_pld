@@ -6,10 +6,10 @@ entity tb_xor_3state is
 end tb_xor_3state;
 
 architecture tb_xor_3state of tb_xor_3state is
-	componEnt xor_3state is
+	component xor_3state is
 		port(x1, x2, nEn: in std_logic;
 		y: out std_logic);
-	end componEnt;
+	end component;
 	
 	signal x1, x2:   std_logic;
 	signal nEn : std_logic;
