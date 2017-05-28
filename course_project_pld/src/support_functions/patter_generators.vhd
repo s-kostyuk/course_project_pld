@@ -1,7 +1,5 @@
 library IEEE;
-use ieee.std_logic_1164.all;
-use ieee.std_logic_unsigned.all;
-use ieee.std_logic_arith.all;  
+use ieee.std_logic_1164.all;  
 
 package pattern_generators is
 	function checkerboard_code (size : integer) 
